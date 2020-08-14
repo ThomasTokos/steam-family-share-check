@@ -2,8 +2,8 @@
 A simple script that will reach out to Steam and check if the provided steam ID is family sharing then sends it to Discord via Web Hook
 
 ## Requierments 
-Node JS
-Steam API Key (Found here: https://steamcommunity.com/dev/apikey)
+Node JS,
+Steam API Key (Found here: https://steamcommunity.com/dev/apikey),
 A Discord Webhook URL
 
 ## Installation
