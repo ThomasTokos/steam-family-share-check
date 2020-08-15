@@ -1,9 +1,9 @@
 module.exports = {
   steam: {
-    apikey: 'STEAM API KEY HERE',
-    appid: 'APP ID HERE'
+    apikey: '',
+    appid: ''
   },
   discord: {
-    webhookURL: "DISCORD WEB HOOK URL HERE"
+    webhookURL: ""
   }
 };

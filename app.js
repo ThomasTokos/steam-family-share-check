@@ -12,7 +12,7 @@ Here we will define what we need for the app to run:
   *apikey: The API Key is what we need to make the query to steam to see if the player is family sharing. You can get an API key here: https://steamcommunity.com/dev/apikey
 */
 const appid = config.steam.appid;
-const steamids = "PLAYER STEAM ID HERE";
+const steamids = "";
 const apikey = config.steam.apikey;
 
 //This is where the request is made to the Steam API and we get the resonse.
