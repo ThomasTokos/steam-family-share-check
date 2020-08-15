@@ -2,8 +2,7 @@
 //I chose to use a npm module for this just to make the code look a little more clean, and sending post request to webhooks though Axios is hard.
 const axios = require('axios');
 const config = require('./config.js');
-const webhook = require("webhook-discord");
-const Hook = new webhook.Webhook(config.discord.webhookURL);
+
 
 /*
 Here we will define what we need for the app to run:
@@ -32,11 +31,22 @@ axios.get(`http://api.steampowered.com/IPlayerService/IsPlayingSharedGame/v0001/
 
 //IF FAMILY SHARE TRUE
 function doFamilyShareTrue(steamResponse) {
-  Hook.warn("Family Share Found", steamids +" is family sharing from: " + steamResponse);
-  Hook.send();
+
 };
 //IF FAMILY SHARE IS FALSE
 function doFamilyShareFalse() {
-  Hook.success("No Family Share Here!",steamids +" is **not** family sharing! :white_check_mark: ");
-  Hook.send();
+
+
 };
+
+const Discord = require('discord.js');
+const client = new Discord.Client();
+
+client.on('ready', () => {
+  console.log(`Logged in as ${client.user.tag}!`);
+  client.user.setActivity("Watchin Rust");
+  console.log(client.users.get('').send(""));
+});
+
+
+client.login(config.discord.token);

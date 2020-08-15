@@ -4,6 +4,6 @@ module.exports = {
     appid: ''
   },
   discord: {
-    webhookURL: ""
+    token: ""
   }
 };
