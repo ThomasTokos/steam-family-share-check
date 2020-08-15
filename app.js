@@ -2,7 +2,17 @@
 //I chose to use a npm module for this just to make the code look a little more clean, and sending post request to webhooks though Axios is hard.
 const axios = require('axios');
 const config = require('./config.js');
+const Discord = require('discord.js');
+const client = new Discord.Client();
 
+
+client.on('ready', () => {
+  console.log(`Logged in as ${client.user.tag}!`);
+  client.user.setActivity("Watchin Rust");
+});
+
+
+client.login(config.discord.token);
 
 /*
 Here we will define what we need for the app to run:
@@ -30,23 +40,93 @@ axios.get(`http://api.steampowered.com/IPlayerService/IsPlayingSharedGame/v0001/
 
 
 //IF FAMILY SHARE TRUE
+//This is a embed that will send to Discord if the result of the query is true
 function doFamilyShareTrue(steamResponse) {
+  const embed = {
+  "title": "Rust Family Share Check",
+  "description": "We will display the results of the user search for family share below! If there is an error, please dm the bot!",
+  "url": "https://github.com/ThomasTokos/steam-family-share-check/tree/discord-bot",
+  "color": 16711696,
+  "timestamp": "2020-08-15T21:05:36.220Z",
+  "footer": {
+    "icon_url": "https://cdn.discordapp.com/embed/avatars/0.png",
+    "text": "Last check:"
+  },
+  "thumbnail": {
+    "url": "https://cdn.discordapp.com/embed/avatars/0.png"
+  },
+  "image": {
+    "url": "https://cdn.discordapp.com/embed/avatars/0.png"
+  },
+  "author": {
+    "name": "Rust Family Share Check Bot",
+    "url": "https://github.com/ThomasTokos/steam-family-share-check/tree/discord-bot",
+    "icon_url": "https://cdn.discordapp.com/embed/avatars/0.png"
+  },
+  "fields": [
+    {
+      "name": ":red_circle: This player is Family Sharing! :red_circle: ",
+      "value": " is Family Sharing a copy of Rust from "
+    },
+    {
+      "name": "Coming Soon",
+      "value": "Coming Soon"
+    },
+    {
+      "name": "Coming Soon",
+      "value": "Coming Soon"
+    },
+    {
+      "name": "Coming Soon",
+      "value": "Coming Soon",
+      "inline": true
+    }
+  ]
+};
+channel.send({ embed });
 
 };
 //IF FAMILY SHARE IS FALSE
+//This is a embed that will send to Discord if the result of the query is false
 function doFamilyShareFalse() {
-
-
-};
-
-const Discord = require('discord.js');
-const client = new Discord.Client();
-
-client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`);
-  client.user.setActivity("Watchin Rust");
-  console.log(client.users.get('').send(""));
-});
-
-
-client.login(config.discord.token);
+  const embed = {
+    "title": "Rust Family Share Check",
+    "description": "We will display the results of the user search for family share below! If there is an error, please dm the bot!",
+    "url": "https://github.com/ThomasTokos/steam-family-share-check/tree/discord-bot",
+    "color": 8311585,
+    "timestamp": "2020-08-15T21:05:36.220Z",
+    "footer": {
+      "icon_url": "https://cdn.discordapp.com/embed/avatars/0.png",
+      "text": "Last check:"
+    },
+    "thumbnail": {
+      "url": "https://cdn.discordapp.com/embed/avatars/0.png"
+    },
+    "image": {
+      "url": "https://cdn.discordapp.com/embed/avatars/0.png"
+    },
+    "author": {
+      "name": "Rust Family Share Check Bot",
+      "url": "https://github.com/ThomasTokos/steam-family-share-check/tree/discord-bot",
+      "icon_url": "https://cdn.discordapp.com/embed/avatars/0.png"
+    },
+    "fields": [
+      {
+        "name": "This player is not family sharing Rust",
+        "value": " is not family sharing rust."
+      },
+      {
+        "name": "Coming Soon",
+        "value": "Coming Soon"
+      },
+      {
+        "name": "Coming Soon",
+        "value": "Coming Soon"
+      },
+      {
+        "name": "Coming Soon",
+        "value": "Coming Soon",
+        "inline": true
+      }
+    ]
+  };
