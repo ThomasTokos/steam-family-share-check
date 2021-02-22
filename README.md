@@ -1,6 +1,9 @@
 # steam-family-share-check
 A simple script that will reach out to Steam and check if the provided steam ID is family sharing then sends it to Discord via Web Hook
 
+# **Project no longer active due a change Facepunch made**
+https://twitter.com/playrust/status/1362143529485623300
+
 ## Requierments 
 Node JS,
 Steam API Key (Found here: https://steamcommunity.com/dev/apikey),
